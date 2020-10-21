@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import SpriteKit
 
 class GameOfLifeViewController: UIViewController {
     
     // Mark: - Outlets
-    @IBOutlet var gridView: UIView!
+    
+    @IBOutlet var gridView: SKView!
     @IBOutlet var presetOne: UIButton!
     @IBOutlet var presetTwo: UIButton!
     @IBOutlet var presetThree: UIButton!
@@ -25,8 +27,12 @@ class GameOfLifeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "conway-space-backround")!)
         // Do any additional setup after loading the view.
+        let scene = ConwaysGridView(size: gridView.bounds.size)
+        self.gridView.presentScene(scene)
+        self.gridView.backgroundColor = .yellow
+        
     }
     
 

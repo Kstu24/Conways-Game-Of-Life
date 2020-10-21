@@ -16,14 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAv-sm-KAY" customClass="GridView" customModule="Conways_Game_Of_Life" customModuleProvider="target">
-                                <rect key="frame" x="20" y="192" width="374" height="350"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Generation #" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78L-hw-hn6">
-                                <rect key="frame" x="158" y="163" width="99" height="20.5"/>
+                                <rect key="frame" x="159" y="145" width="99" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.94749365480000003" green="0.82905596680000004" blue="0.067499949569999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="rcW-xR-hCH">
@@ -31,19 +27,27 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9c-ma-N57">
                                         <rect key="frame" x="0.0" y="0.0" width="55" height="30"/>
-                                        <state key="normal" title="Preset 1"/>
+                                        <state key="normal" title="Preset 1">
+                                            <color key="titleColor" red="0.94749365480000003" green="0.82905596680000004" blue="0.067499949569999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lz7-H5-bgn">
                                         <rect key="frame" x="99" y="0.0" width="57" height="30"/>
-                                        <state key="normal" title="Preset 2"/>
+                                        <state key="normal" title="Preset 2">
+                                            <color key="titleColor" red="0.94749365480000003" green="0.82905596680000004" blue="0.067499949569999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUP-6Y-MY2">
                                         <rect key="frame" x="200" y="0.0" width="58" height="30"/>
-                                        <state key="normal" title="Preset 3"/>
+                                        <state key="normal" title="Preset 3">
+                                            <color key="titleColor" red="0.94749365480000003" green="0.82905596680000004" blue="0.067499949569999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zae-CW-DDf">
                                         <rect key="frame" x="302" y="0.0" width="58" height="30"/>
-                                        <state key="normal" title="Preset 4"/>
+                                        <state key="normal" title="Preset 4">
+                                            <color key="titleColor" red="0.94749365480000003" green="0.82905596680000004" blue="0.067499949569999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -69,55 +73,61 @@
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Tlu-fW-j6i">
                                 <rect key="frame" x="18" y="690" width="378" height="31"/>
+                                <color key="tintColor" red="0.94749365480000003" green="0.82905596680000004" blue="0.067499949569999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2w-1H-Pmz">
                                 <rect key="frame" x="20" y="595" width="49" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.94749365480000003" green="0.82905596680000004" blue="0.067499949569999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="a4R-u8-HdD">
                                 <rect key="frame" x="20" y="623.5" width="376" height="31"/>
+                                <color key="tintColor" red="0.94749365480000003" green="0.82905596680000004" blue="0.067499949569999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zoom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ay6-ua-1ca">
                                 <rect key="frame" x="20" y="662.5" width="44.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.94749365480000003" green="0.82905596680000004" blue="0.067499949569999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <skView contentMode="scaleToFill" sceneName="ConwaysGridView" translatesAutoresizingMaskIntoConstraints="NO" id="GKk-eH-y2n">
+                                <rect key="frame" x="19" y="167" width="375" height="375"/>
+                            </skView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="a4R-u8-HdD" secondAttribute="trailing" constant="20" id="1TF-G9-VPw"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oAv-sm-KAY" secondAttribute="trailing" constant="20" id="6X7-Fy-s9c"/>
+                            <constraint firstItem="rcW-xR-hCH" firstAttribute="top" secondItem="GKk-eH-y2n" secondAttribute="bottom" constant="8" symbolic="YES" id="3Gc-22-itE"/>
+                            <constraint firstItem="qD8-QK-ISC" firstAttribute="top" secondItem="Tlu-fW-j6i" secondAttribute="bottom" constant="45" id="4Jc-5v-BMo"/>
                             <constraint firstItem="ay6-ua-1ca" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8Ok-3A-Vh2"/>
-                            <constraint firstItem="78L-hw-hn6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="158" id="9Q8-4q-TOl"/>
-                            <constraint firstAttribute="bottom" secondItem="oAv-sm-KAY" secondAttribute="bottom" constant="354" id="9tN-OI-LGa"/>
+                            <constraint firstItem="78L-hw-hn6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="159" id="9Q8-4q-TOl"/>
                             <constraint firstItem="GMJ-nA-Wdn" firstAttribute="top" secondItem="qD8-QK-ISC" secondAttribute="bottom" constant="23" id="B3s-LN-PJe"/>
                             <constraint firstItem="GMJ-nA-Wdn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="DxV-6x-69F"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Tlu-fW-j6i" secondAttribute="trailing" constant="20" id="EHd-0O-nNA"/>
                             <constraint firstItem="ay6-ua-1ca" firstAttribute="top" secondItem="a4R-u8-HdD" secondAttribute="bottom" constant="9" id="EzL-PI-2XG"/>
-                            <constraint firstItem="oAv-sm-KAY" firstAttribute="top" secondItem="78L-hw-hn6" secondAttribute="bottom" constant="8.5" id="OJ8-aK-OL5"/>
                             <constraint firstItem="Q2w-1H-Pmz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PjD-a6-aEx"/>
-                            <constraint firstItem="rcW-xR-hCH" firstAttribute="top" secondItem="oAv-sm-KAY" secondAttribute="bottom" constant="8" symbolic="YES" id="Qmb-bA-sXM"/>
+                            <constraint firstItem="GKk-eH-y2n" firstAttribute="top" secondItem="78L-hw-hn6" secondAttribute="bottom" constant="1.5" id="QEk-Ne-wLT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Q2w-1H-Pmz" secondAttribute="trailing" constant="345" id="TSh-XU-K4B"/>
-                            <constraint firstItem="oAv-sm-KAY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="TXn-BP-JqA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rcW-xR-hCH" secondAttribute="trailing" constant="27" id="YsB-jh-Cv7"/>
                             <constraint firstItem="Tlu-fW-j6i" firstAttribute="top" secondItem="ay6-ua-1ca" secondAttribute="bottom" constant="7" id="bNC-bc-MNn"/>
                             <constraint firstItem="Tlu-fW-j6i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="bnh-WO-L58"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GMJ-nA-Wdn" secondAttribute="trailing" constant="10" id="cXi-Qf-KMZ"/>
                             <constraint firstItem="GMJ-nA-Wdn" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="czi-dH-HKn"/>
+                            <constraint firstItem="GKk-eH-y2n" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="19" id="dQ8-ff-CSV"/>
+                            <constraint firstItem="GKk-eH-y2n" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.396205" constant="20" id="gkC-tU-pX2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qD8-QK-ISC" secondAttribute="trailing" id="jDr-QE-IDf"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="78L-hw-hn6" secondAttribute="trailing" constant="157" id="jcQ-Vd-W4T"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="78L-hw-hn6" secondAttribute="trailing" constant="156" id="jcQ-Vd-W4T"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ay6-ua-1ca" secondAttribute="trailing" constant="349.5" id="pkZ-6o-cui"/>
+                            <constraint firstItem="GKk-eH-y2n" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.927536" constant="-9" id="ppY-Cs-DWT"/>
                             <constraint firstItem="a4R-u8-HdD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="22" id="r5k-3K-6BD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qD8-QK-ISC" secondAttribute="trailing" constant="147" id="t0p-Gq-JtA"/>
                             <constraint firstItem="qD8-QK-ISC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="148" id="t4k-4f-bc4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GKk-eH-y2n" secondAttribute="trailing" constant="20" id="tKu-wc-rW7"/>
                             <constraint firstItem="Q2w-1H-Pmz" firstAttribute="top" secondItem="rcW-xR-hCH" secondAttribute="bottom" constant="15" id="uE3-lO-zAd"/>
                             <constraint firstItem="rcW-xR-hCH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="27" id="uXv-1N-hhL"/>
                             <constraint firstItem="a4R-u8-HdD" firstAttribute="top" secondItem="Q2w-1H-Pmz" secondAttribute="bottom" constant="8" symbolic="YES" id="wXo-0j-RNn"/>
-                            <constraint firstItem="78L-hw-hn6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="23" id="zhX-U5-mSa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Conways Game Of Life" id="ifJ-hv-qvQ">
@@ -130,7 +140,7 @@
                     <connections>
                         <outlet property="advanceOneStepButton" destination="GMJ-nA-Wdn" id="dSe-DE-Dhd"/>
                         <outlet property="clearButton" destination="qD8-QK-ISC" id="6Ui-Zd-ouH"/>
-                        <outlet property="gridView" destination="oAv-sm-KAY" id="zL6-2Z-cEt"/>
+                        <outlet property="gridView" destination="GKk-eH-y2n" id="O0d-yz-xvz"/>
                         <outlet property="infoButton" destination="b8a-ni-lUN" id="IbD-3C-oFL"/>
                         <outlet property="playPauseButton" destination="GMJ-nA-Wdn" id="BF7-jc-elC"/>
                         <outlet property="presetFour" destination="Zae-CW-DDf" id="iFq-P6-IUe"/>
@@ -296,6 +306,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Une-tt-rH3">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="0.94749365480000003" green="0.82905596680000004" blue="0.067499949569999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

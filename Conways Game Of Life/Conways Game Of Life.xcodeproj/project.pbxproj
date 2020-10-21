@@ -14,7 +14,10 @@
 		1148ECB82535392C000F71FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1148ECB62535392C000F71FF /* LaunchScreen.storyboard */; };
 		1148ECC625353F8A000F71FF /* GameOfLifeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1148ECC525353F8A000F71FF /* GameOfLifeViewController.swift */; };
 		1148ECC925353F9A000F71FF /* AboutDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1148ECC825353F9A000F71FF /* AboutDetailViewController.swift */; };
+		115ACFE3253937EC005C40B2 /* ConwaysGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115ACFE2253937EC005C40B2 /* ConwaysGridView.swift */; };
+		115ACFE6253A8B31005C40B2 /* CustomGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115ACFE5253A8B30005C40B2 /* CustomGridCell.swift */; };
 		118671D82536975C0077F147 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118671D72536975C0077F147 /* GridView.swift */; };
+		118671DC2537F3C30077F147 /* ConwaysGameRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118671DB2537F3C30077F147 /* ConwaysGameRules.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +30,10 @@
 		1148ECB92535392C000F71FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1148ECC525353F8A000F71FF /* GameOfLifeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOfLifeViewController.swift; sourceTree = "<group>"; };
 		1148ECC825353F9A000F71FF /* AboutDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutDetailViewController.swift; sourceTree = "<group>"; };
+		115ACFE2253937EC005C40B2 /* ConwaysGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConwaysGridView.swift; sourceTree = "<group>"; };
+		115ACFE5253A8B30005C40B2 /* CustomGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGridCell.swift; sourceTree = "<group>"; };
 		118671D72536975C0077F147 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		118671DB2537F3C30077F147 /* ConwaysGameRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConwaysGameRules.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +81,8 @@
 				1148ECC525353F8A000F71FF /* GameOfLifeViewController.swift */,
 				1148ECC825353F9A000F71FF /* AboutDetailViewController.swift */,
 				118671D72536975C0077F147 /* GridView.swift */,
+				115ACFE2253937EC005C40B2 /* ConwaysGridView.swift */,
+				115ACFE5253A8B30005C40B2 /* CustomGridCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -92,6 +100,7 @@
 		1148ECC22535394B000F71FF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				118671DB2537F3C30077F147 /* ConwaysGameRules.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -175,10 +184,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				115ACFE6253A8B31005C40B2 /* CustomGridCell.swift in Sources */,
 				1148ECAC2535391E000F71FF /* AppDelegate.swift in Sources */,
 				1148ECAE2535391E000F71FF /* SceneDelegate.swift in Sources */,
 				1148ECC625353F8A000F71FF /* GameOfLifeViewController.swift in Sources */,
+				115ACFE3253937EC005C40B2 /* ConwaysGridView.swift in Sources */,
 				118671D82536975C0077F147 /* GridView.swift in Sources */,
+				118671DC2537F3C30077F147 /* ConwaysGameRules.swift in Sources */,
 				1148ECC925353F9A000F71FF /* AboutDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
