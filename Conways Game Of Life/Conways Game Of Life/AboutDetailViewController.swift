@@ -14,15 +14,12 @@ class AboutDetailViewController: UIViewController {
     @IBOutlet var ruleTwo: UILabel!
     @IBOutlet var ruleThree: UILabel!
     @IBOutlet var ruleFour: UILabel!
-    @IBOutlet var ruleFive: UILabel!
-    @IBOutlet var ruleSix: UILabel!
-    @IBOutlet var ruleSeven: UILabel!
     @IBOutlet var algorithmInfoTextView: UITextView!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "conway-space-backround")!)
         // Do any additional setup after loading the view.
     }
     

@@ -10,7 +10,7 @@ import SpriteKit
 
 class GameOfLifeViewController: UIViewController {
     
-    // Mark: - Outlets
+    // MARK: - Outlets
     
     @IBOutlet var gridView: SKView!
     @IBOutlet var presetOne: UIButton!
@@ -24,26 +24,57 @@ class GameOfLifeViewController: UIViewController {
     @IBOutlet var speedSlider: UISlider!
     @IBOutlet var zoomSlider: UISlider!
     @IBOutlet var clearButton: UIButton!
+    @IBOutlet var generationCounter: UILabel!
+    
+    // MARK: - Properties
+    var grid: ConwaysGridView!
+//    var pause: Bool = false
+    
+    // MARK: - Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "conway-space-backround")!)
-        // Do any additional setup after loading the view.
-        let scene = ConwaysGridView(size: gridView.bounds.size)
-        self.gridView.presentScene(scene)
-        self.gridView.backgroundColor = .yellow
+        grid = ConwaysGridView(size: gridView.bounds.size)
         
+        // Set backround to space image
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "conway-space-backround")!)
+        
+        // Draws grid into the view
+//        let scene = ConwaysGridView(size: gridView.bounds.size)
+        self.gridView.presentScene(grid)
+        
+//        // Takes generation label and sets text equal to counter function (returns int)
+//        generationCounter.text = "Generation: \(String(describing: grid.addGeneration()))"
+    }
+
+    // MARK: - Actions
+    
+    @IBAction func playButtonTapped(_ sender: Any) {
+        grid.playGame()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func advanceOneStepButtonTapped(_ sender: Any) {
+        grid.advanceOneStep()
     }
-    */
-
+    
+    @IBAction func clearButtonTapped(_ sender: Any) {
+        print("Clear button tapped")
+        grid.clearBoard()
+    }
+    
+    @IBAction func beaconButtonTapped(_ sender: Any) {
+        grid.beacon()
+    }
+    
+    @IBAction func blinkerButtonTapped(_ sender: Any) {
+        grid.blinker()
+    }
+    
+    @IBAction func gliderButtonTapped(_ sender: Any) {
+        grid.glider()
+    }
+    
+    @IBAction func toadButtonTapped(_ sender: Any) {
+        grid.toad()
+    }
 }

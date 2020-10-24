@@ -17,8 +17,19 @@ class Node: SKShapeNode {
 
     var x: Int = 0
     var y: Int = 0
-    var currentState: CurrentState = .dead
-//    var currentStateColor: UIColor
+    var index: Int = 0
+    var currentState: CurrentState = .dead {
+        didSet {
+            switch currentState {
+            case .alive:
+                return fillColor = .yellow
+            case .dead:
+                return fillColor = .black
+            default:
+                fillColor = .purple
+            }
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -28,7 +39,6 @@ class Node: SKShapeNode {
         self.x = x
         self.y = y
         self.currentState = currentState
-//        self.currentState = fillColor
         super.init()
     }
     
@@ -39,4 +49,6 @@ class Node: SKShapeNode {
         self.fillColor = .black
         self.currentState = currentState
     }
+    
+
 }
