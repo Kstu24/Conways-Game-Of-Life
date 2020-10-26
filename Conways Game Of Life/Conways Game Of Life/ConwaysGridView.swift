@@ -16,40 +16,33 @@ class ConwaysGridView: SKScene {
     // MARK: - Properties
     var touchEnabled: Bool = true
     var gridArray: [Node] = []
-    var liveNodes: [Node] = []
     var generationBool: Bool = false
-    let gridSize = 20
-    
-    // Block properties
-    
-    
-    // MARK: - Methods
-    
-    // Generation Counter
-    func addGeneration() -> Int {
-        var generationCounter = 0
-        while generationBool == true {
-            generationCounter += 1
+    let gridSize = 25
+    var generationCounter = 0 {
+            // Send notification every time generation count is changed to update label in VC
+            didSet {
+                // Step 4
+                NotificationCenter.default.post(name: .updateGenLabel,
+                object: self)
+            }
         }
-        return generationCounter
+    // MARK: - Methods
+    func changeColor() {
+        for x in gridArray {
+            x.colorChange.toggle()
+        }
     }
     
-    // Adds live nodes to live nodes array
-    func addLiveNodes(node: Node) {
-        liveNodes.append(node)
-    }
-    
-    // Removes dead nodes from live nodes array
-    func removeDeadNodes() {
-//        let deadNodes = liveNodes.filter { $0.currentState == .dead }
-//        liveNodes.remove(at: deadNodes.count) // fatal error happens here when there are only two or less nodes that are alive
+    func indexForCoordinate(x: Int, y: Int) -> Int {
+        let nodeIndex = ((x) + (y * gridSize))
+        return nodeIndex
     }
     
     // Draws grid view and appends nodes to grid array
     override func didMove(to view: SKView) {
         var indexCounter = 0
-        let cellCount = 20
-        let cellSize = CGFloat(view.frame.height / 20)
+        let cellCount = gridSize
+        let cellSize = CGFloat(view.frame.height / 25)
         
         for y in 0..<cellCount {
             
@@ -61,36 +54,10 @@ class ConwaysGridView: SKScene {
                 node.y = y
                 node.index = indexCounter
                 indexCounter += 1
-//                print("X:\(node.x), Y: \(node.y), Index:\(node.index), Index counter: \(indexCounter)")
                 self.addChild(node)
-                // TODO: Add cell coordinates
                 gridArray.append(node)
-                
             }
         }
-    }
-    
-    func indexForCoordinate(x: Int, y: Int) -> Int {
-        let nodeIndex = ((x) + (y * gridSize))
-        return nodeIndex
-    }
-    
-    
-    
-    // Clears board by setting all live nodes currentState equal to dead
-    func clearBoard() {
-        for i in gridArray {
-            i.currentState = .dead
-        }
-    }
-    
-    // function that returns the index of a given node
-    func findNodeIndex(node: Node) -> Int {
-        var nodeIndex = 0
-        let yMultiplier = node.y * 20
-        nodeIndex = node.x + yMultiplier
-
-        return nodeIndex
     }
     
     // Allows user to tap on the grid and toggle alive and dead nodes
@@ -101,80 +68,94 @@ class ConwaysGridView: SKScene {
                 if touchEnabled {
                     if node.currentState == .dead {
                         node.currentState = .alive
-                        addLiveNodes(node: node)
                     } else {
                         node.currentState = .dead
-                        removeDeadNodes()
                     }
-//                    print(node.currentState)
                 }
             }
-//            print("location.x = \(location.x), location.y = \(location.y)")
         }
     }
     
     func checkNeighbor(node: Node) {
         
-        generationBool = false
-        
         // cardinal directions
-        let rightNeighbor: Node = Node(x: node.x + 1, y: node.y)
-        let leftNeighbor: Node = Node(x: node.x - 1, y: node.y)
-        let topNeighbor: Node = Node(x: node.x, y: node.y + 1)
-        let bottomNeighbor: Node = Node(x: node.x, y: node.y - 1)
+        let rightNeighbor = (x: node.x + 1, y: node.y, currentState: node.currentState)
+        let leftNeighbor = (x: node.x - 1, y: node.y, currentState: node.currentState)
+        let topNeighbor = (x: node.x, y: node.y + 1, currentState: node.currentState)
+        let bottomNeighbor = (x: node.x, y: node.y - 1, currentState: node.currentState)
         
         // diagonal directions
-        let topRightNeighbor: Node = Node(x: node.x + 1, y: node.y + 1)
-        let topLeftNeighbor: Node = Node(x: node.x - 1, y: node.y + 1)
-        let bottomLeftNeighbor: Node = Node(x: node.x - 1, y: node.y - 1)
-        let bottomRightNeighbor: Node = Node(x: node.x + 1, y: node.y - 1)
+        let topRightNeighbor = (x: node.x + 1, y: node.y + 1, currentState: node.currentState)
+        let topLeftNeighbor = (x: node.x - 1, y: node.y + 1, currentState: node.currentState)
+        let bottomLeftNeighbor = (x: node.x - 1, y: node.y - 1, currentState: node.currentState)
+        let bottomRightNeighbor = (x: node.x + 1, y: node.y - 1, currentState: node.currentState)
         
         // Array that holds all directions: Loop through to check neighbors currentState
-        let neighborNodes: [Node] = [rightNeighbor, leftNeighbor, topNeighbor, bottomNeighbor, topRightNeighbor, topLeftNeighbor, bottomLeftNeighbor, bottomRightNeighbor]
+        let neighborNodesHolder = [rightNeighbor, leftNeighbor, topNeighbor, bottomNeighbor, topRightNeighbor, topLeftNeighbor, bottomLeftNeighbor, bottomRightNeighbor]
+        // Loops through neighborNodes and filters out nodes with coordinates outside the bounds of the grid
+        let neighborNodesInBounds = neighborNodesHolder.filter { $0.x >= 0 && $0.x <= 24 && $0.y >= 0 && $0.y <= 24 }
         
-        // Loops through the array of neighbors to check if the currentState is equal to alive
-        let results = neighborNodes.filter { $0.currentState == .alive}
+        var liveCount = 0
+        for x in neighborNodesInBounds {
+            let node = gridArray[indexForCoordinate(x: x.x, y: x.y)]
+            if node.currentState == .alive {
+                liveCount += 1
+            }
+        }
         
-        // Any live cell with two or three live neighbours survives.
         if node.currentState == .alive {
-            if results.count == 2 || results.count == 3 {
-                node.currentState = .alive
+            if liveCount == 2 || liveCount == 3 {
+                node.nextState = .alive
+            } else {
+                node.nextState = .dead
             }
         } else {
-            node.currentState = .dead
-            removeDeadNodes()
-        }
-        
-        // Any dead cell with three live neighbours becomes a live cell.
-        if node.currentState == .dead {
-            if results.count == 3 {
-                node.currentState = .alive
+            if liveCount == 3 {
+                node.nextState = .alive
+            } else {
+                node.nextState = .dead
             }
-        } else {
-            node.currentState = .dead
-            removeDeadNodes()
         }
-        
-        // All other live cells die in the next generation. Similarly, all other dead cells stay dead.
-        generationBool = true
+    }
+    
+    // MARK: - Iteration methods
+    // Clears board by setting all live nodes currentState equal to dead
+    func clearBoard() {
+        for i in gridArray {
+            i.currentState = .dead
+        }
+        generationCounter = 0
     }
     
     // Works its way through the generations
     func playGame() {
-        for node in gridArray {
-            checkNeighbor(node: node)
-        }
+        touchEnabled = false
+        let sequence = SKAction.sequence([
+            SKAction.run(advanceOneStep),
+            SKAction.wait(forDuration: 0.2)
+        ])
+        let action = SKAction.repeatForever(sequence)
+        run(action)
     }
     
     // Advances the generation by one instead of looping
     func advanceOneStep() {
-        // How to only advance one generation?
-        for nodes in liveNodes {
-            checkNeighbor(node: nodes)
+        for node in gridArray {
+            checkNeighbor(node: node)
         }
+        for x in gridArray {
+            x.currentState = x.nextState
+        }
+        generationCounter += 1
     }
     
-    // Presets methods
+    /// Removes all actions from scene
+    func stopLoop() {
+        touchEnabled = true
+        self.removeAllActions()
+    }
+    
+    // MARK: - Preset methods
     
     func beacon() {
         clearBoard()
@@ -214,3 +195,4 @@ class ConwaysGridView: SKScene {
         gridArray[indexForCoordinate(x: 10, y: 12)].currentState = .alive
     }
 }
+

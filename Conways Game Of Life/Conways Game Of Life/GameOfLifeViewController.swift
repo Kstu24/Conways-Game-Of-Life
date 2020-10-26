@@ -8,6 +8,10 @@
 import UIKit
 import SpriteKit
 
+protocol ShouldTurnRedDelegate: class {
+    func shouldTurnRed()
+}
+
 class GameOfLifeViewController: UIViewController {
     
     // MARK: - Outlets
@@ -21,15 +25,13 @@ class GameOfLifeViewController: UIViewController {
     @IBOutlet var advanceOneStepButton: UIToolbar!
     @IBOutlet var stopButton: UIToolbar!
     @IBOutlet var infoButton: UIBarButtonItem!
-    @IBOutlet var speedSlider: UISlider!
-    @IBOutlet var zoomSlider: UISlider!
     @IBOutlet var clearButton: UIButton!
     @IBOutlet var generationCounter: UILabel!
+    @IBOutlet var colorSwitch: UISwitch!
     
     // MARK: - Properties
     var grid: ConwaysGridView!
-//    var pause: Bool = false
-    
+    weak var delegate: ShouldTurnRedDelegate?
     // MARK: - Methods
     
     override func viewDidLoad() {
@@ -38,15 +40,19 @@ class GameOfLifeViewController: UIViewController {
         
         // Set backround to space image
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "conway-space-backround")!)
-        
+                
         // Draws grid into the view
-//        let scene = ConwaysGridView(size: gridView.bounds.size)
         self.gridView.presentScene(grid)
         
-//        // Takes generation label and sets text equal to counter function (returns int)
-//        generationCounter.text = "Generation: \(String(describing: grid.addGeneration()))"
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateViews),
+                                               name: .updateGenLabel,
+                                               object: nil)
     }
-
+    
+    @objc private func updateViews() {
+        generationCounter.text = "Generation \(grid.generationCounter)"
+    }
     // MARK: - Actions
     
     @IBAction func playButtonTapped(_ sender: Any) {
@@ -58,7 +64,6 @@ class GameOfLifeViewController: UIViewController {
     }
     
     @IBAction func clearButtonTapped(_ sender: Any) {
-        print("Clear button tapped")
         grid.clearBoard()
     }
     
@@ -77,4 +82,21 @@ class GameOfLifeViewController: UIViewController {
     @IBAction func toadButtonTapped(_ sender: Any) {
         grid.toad()
     }
+    
+    @IBAction func stopButtonTapped(_ sender: Any) {
+        grid.stopLoop()
+    }
+    
+    @IBAction func colorSwitchToggled(_ sender: Any) {
+        if colorSwitch.isOn {
+            grid.changeColor()
+        } else {
+            grid.changeColor()
+        }
+    }
 }
+
+extension NSNotification.Name {
+    static let updateGenLabel = NSNotification.Name("updateGenLabel")
+}
+

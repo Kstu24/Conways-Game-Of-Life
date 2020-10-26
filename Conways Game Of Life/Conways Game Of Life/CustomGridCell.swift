@@ -15,18 +15,55 @@ class Node: SKShapeNode {
         case dead
     }
 
+    var colorChange: Bool = false
+    
     var x: Int = 0
     var y: Int = 0
     var index: Int = 0
     var currentState: CurrentState = .dead {
         didSet {
-            switch currentState {
-            case .alive:
-                return fillColor = .yellow
-            case .dead:
-                return fillColor = .black
-            default:
-                fillColor = .purple
+            if colorChange == false {
+                switch currentState {
+                case .alive:
+                    return fillColor = .yellow
+                case .dead:
+                    return fillColor = .black
+                default:
+                    return
+                }
+            } else {
+                switch currentState {
+                case .alive:
+                    return fillColor = .red
+                case .dead:
+                    return fillColor = .black
+                default:
+                    return
+                }
+            }
+        }
+    }
+    
+    var nextState: CurrentState = .dead {
+        didSet {
+            if colorChange == false {
+                switch currentState {
+                case .alive:
+                    return fillColor = .yellow
+                case .dead:
+                    return fillColor = .black
+                default:
+                    return
+                }
+            } else {
+                switch currentState {
+                case .alive:
+                    return fillColor = .red
+                case .dead:
+                    return fillColor = .black
+                default:
+                    return
+                }
             }
         }
     }
@@ -51,4 +88,8 @@ class Node: SKShapeNode {
     }
     
 
+}
+
+extension String {
+    static var shouldShowRedKey = "ShouldTurnRed"
 }
