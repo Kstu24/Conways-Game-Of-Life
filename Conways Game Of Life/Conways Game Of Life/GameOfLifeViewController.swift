@@ -6,11 +6,17 @@
 //
 
 import UIKit
+import SpriteKit
+
+protocol ShouldTurnRedDelegate: class {
+    func shouldTurnRed()
+}
 
 class GameOfLifeViewController: UIViewController {
     
-    // Mark: - Outlets
-    @IBOutlet var gridView: UIView!
+    // MARK: - Outlets
+    
+    @IBOutlet var gridView: SKView!
     @IBOutlet var presetOne: UIButton!
     @IBOutlet var presetTwo: UIButton!
     @IBOutlet var presetThree: UIButton!
@@ -19,25 +25,78 @@ class GameOfLifeViewController: UIViewController {
     @IBOutlet var advanceOneStepButton: UIToolbar!
     @IBOutlet var stopButton: UIToolbar!
     @IBOutlet var infoButton: UIBarButtonItem!
-    @IBOutlet var speedSlider: UISlider!
-    @IBOutlet var zoomSlider: UISlider!
     @IBOutlet var clearButton: UIButton!
+    @IBOutlet var generationCounter: UILabel!
+    @IBOutlet var colorSwitch: UISwitch!
+    
+    // MARK: - Properties
+    var grid: ConwaysGridView!
+    weak var delegate: ShouldTurnRedDelegate?
+    // MARK: - Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        grid = ConwaysGridView(size: gridView.bounds.size)
+        
+        // Set backround to space image
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "conway-space-backround")!)
+                
+        // Draws grid into the view
+        self.gridView.presentScene(grid)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateViews),
+                                               name: .updateGenLabel,
+                                               object: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc private func updateViews() {
+        generationCounter.text = "Generation \(grid.generationCounter)"
     }
-    */
-
+    // MARK: - Actions
+    
+    @IBAction func playButtonTapped(_ sender: Any) {
+        grid.playGame()
+    }
+    
+    @IBAction func advanceOneStepButtonTapped(_ sender: Any) {
+        grid.advanceOneStep()
+    }
+    
+    @IBAction func clearButtonTapped(_ sender: Any) {
+        grid.clearBoard()
+    }
+    
+    @IBAction func beaconButtonTapped(_ sender: Any) {
+        grid.beacon()
+    }
+    
+    @IBAction func blinkerButtonTapped(_ sender: Any) {
+        grid.blinker()
+    }
+    
+    @IBAction func gliderButtonTapped(_ sender: Any) {
+        grid.glider()
+    }
+    
+    @IBAction func toadButtonTapped(_ sender: Any) {
+        grid.toad()
+    }
+    
+    @IBAction func stopButtonTapped(_ sender: Any) {
+        grid.stopLoop()
+    }
+    
+    @IBAction func colorSwitchToggled(_ sender: Any) {
+        if colorSwitch.isOn {
+            grid.changeColor()
+        } else {
+            grid.changeColor()
+        }
+    }
 }
+
+extension NSNotification.Name {
+    static let updateGenLabel = NSNotification.Name("updateGenLabel")
+}
+
