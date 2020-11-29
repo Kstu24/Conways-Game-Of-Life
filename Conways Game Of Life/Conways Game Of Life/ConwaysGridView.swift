@@ -8,9 +8,6 @@ import Foundation
 import SpriteKit
 import SwiftUI
 
-// Create bounds using the coordinates so outside nodes don't exist (0,0 - 19,19)
-// Create an array for each row in grid view to help call as coordinates
-
 class ConwaysGridView: SKScene {
     
     // MARK: - Properties
@@ -21,9 +18,7 @@ class ConwaysGridView: SKScene {
     var generationCounter = 0 {
             // Send notification every time generation count is changed to update label in VC
             didSet {
-                // Step 4
-                NotificationCenter.default.post(name: .updateGenLabel,
-                object: self)
+                NotificationCenter.default.post(name: .updateGenLabel, object: self)
             }
         }
     // MARK: - Methods

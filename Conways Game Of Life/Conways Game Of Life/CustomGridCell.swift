@@ -28,8 +28,6 @@ class Node: SKShapeNode {
                     return fillColor = .yellow
                 case .dead:
                     return fillColor = .black
-                default:
-                    return
                 }
             } else {
                 switch currentState {
@@ -37,8 +35,6 @@ class Node: SKShapeNode {
                     return fillColor = .red
                 case .dead:
                     return fillColor = .black
-                default:
-                    return
                 }
             }
         }
@@ -52,8 +48,6 @@ class Node: SKShapeNode {
                     return fillColor = .yellow
                 case .dead:
                     return fillColor = .black
-                default:
-                    return
                 }
             } else {
                 switch currentState {
@@ -61,8 +55,6 @@ class Node: SKShapeNode {
                     return fillColor = .red
                 case .dead:
                     return fillColor = .black
-                default:
-                    return
                 }
             }
         }
@@ -86,8 +78,6 @@ class Node: SKShapeNode {
         self.fillColor = .black
         self.currentState = currentState
     }
-    
-
 }
 
 extension String {
